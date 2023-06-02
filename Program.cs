@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Hangman
+namespace ConsoleApp4
 {
     internal class Program
     {
@@ -8,13 +8,17 @@ namespace Hangman
         public const int GUESS_LIMIT = 6;
         static void Main(string[] args)
         {
+            //introduction to the program
             Console.WriteLine("Welcome to the game of Hangman!");
             Console.WriteLine("You will be guessing letters inside of the secret word...");
             Console.WriteLine($"You have the right to {Program.GUESS_LIMIT} wrong guesses!");
             Console.WriteLine("Lets go!");
+            //creating a list with strings that are been used as guessing words
             List<string> words = new List<string>() { "mayhem", "chaos", "destruction" };
+            //block of code that is randomly picking string out of the list
             int randomIndex = rnd.Next(words.Count);
             string randomWord = words[randomIndex];
+            //creating an array of char. to visualy display and build our guessing word through the program 
             char[] guessedWord = new char[randomWord.Length];
             for (int i = 0; i < guessedWord.Length; i++)
             {
@@ -24,11 +28,14 @@ namespace Hangman
             Console.WriteLine();
             int wrongGuess = 0;
             bool guessedRight = false;
+            //usign while loop to loop through conditions until one occurs
             while (true)
             {
+                //asking for input and checking if entered input exists in randomly picked word which we store in a boolean
                 char guessingLetter = Console.ReadKey().KeyChar;
                 Console.WriteLine();
                 bool charExists = randomWord.Contains(guessingLetter);
+                //using the condition of boolean to procced with building our word or...*
                 if (charExists)
                 {
                     for (int i = 0; i < randomWord.Length; i++)
@@ -39,6 +46,7 @@ namespace Hangman
                         }
                     }
                     Console.WriteLine(guessedWord);
+                    //buiding an string out of char array to be able to check if player guessed the randomly picked word
                     string allCharExist = new(guessedWord);
                     if (allCharExist == randomWord)
                     {
@@ -47,17 +55,21 @@ namespace Hangman
                     }
                     Console.WriteLine("Nice guess!");
                     Console.WriteLine("Keep it going...");
+                    Console.WriteLine();
                 }
+                //...*stop and count wrong guess
                 else
                 {
                     wrongGuess++;
                     Console.WriteLine("Secret word doesnt contain the letter you provided!");
+                    //checking if player player exceeded the limit of wrong guesses
                     if (wrongGuess >= Program.GUESS_LIMIT)
                     {
                         break;
                     }
                     Console.WriteLine($"You have {Program.GUESS_LIMIT - wrongGuess} shots left.");
                     Console.WriteLine("Try again...");
+                    Console.WriteLine();
                 }
             }
             if (guessedRight)
