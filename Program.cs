@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ConsoleApp4
+namespace Hangman
 {
     internal class Program
     {
@@ -39,6 +39,12 @@ namespace ConsoleApp4
                         }
                     }
                     Console.WriteLine(guessedWord);
+                    string allCharExist = new(guessedWord);
+                    if (allCharExist == randomWord)
+                    {
+                        guessedRight = true;
+                        break;
+                    }
                     Console.WriteLine("Nice guess!");
                     Console.WriteLine("Keep it going...");
                 }
@@ -46,18 +52,12 @@ namespace ConsoleApp4
                 {
                     wrongGuess++;
                     Console.WriteLine("Secret word doesnt contain the letter you provided!");
+                    if (wrongGuess >= Program.GUESS_LIMIT)
+                    {
+                        break;
+                    }
                     Console.WriteLine($"You have {Program.GUESS_LIMIT - wrongGuess} shots left.");
                     Console.WriteLine("Try again...");
-                }
-                if (wrongGuess >= Program.GUESS_LIMIT)
-                {
-                    break;
-                }
-                string allCharExist = new(guessedWord);
-                if (allCharExist == randomWord)
-                {
-                    guessedRight = true;
-                    break;
                 }
             }
             if (guessedRight)
