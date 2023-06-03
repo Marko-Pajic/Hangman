@@ -26,7 +26,7 @@ namespace ConsoleApp4
                 Console.Write(guessedWord[i]);
             }
             Console.WriteLine();
-            int wrongGuess = 0;
+            int numOfWrongGuesses = 0;
             bool guessedRight = false;
             //usign while loop to loop through conditions until one occurs
             while (true)
@@ -47,8 +47,8 @@ namespace ConsoleApp4
                     }
                     Console.WriteLine(guessedWord);
                     //buiding an string out of char array to be able to check if player guessed the randomly picked word
-                    string allCharExist = new(guessedWord);
-                    if (allCharExist == randomWord)
+                    string guessedWordString = new(guessedWord);
+                    if (guessedWordString == randomWord)
                     {
                         guessedRight = true;
                         break;
@@ -60,14 +60,14 @@ namespace ConsoleApp4
                 //...*stop and count wrong guess
                 else
                 {
-                    wrongGuess++;
+                    numOfWrongGuesses++;
                     Console.WriteLine("Secret word doesnt contain the letter you provided!");
                     //checking if player player exceeded the limit of wrong guesses
-                    if (wrongGuess >= Program.GUESS_LIMIT)
+                    if (numOfWrongGuesses >= Program.GUESS_LIMIT)
                     {
                         break;
                     }
-                    Console.WriteLine($"You have {Program.GUESS_LIMIT - wrongGuess} shots left.");
+                    Console.WriteLine($"You have {Program.GUESS_LIMIT - numOfWrongGuesses} shots left.");
                     Console.WriteLine("Try again...");
                     Console.WriteLine();
                 }
