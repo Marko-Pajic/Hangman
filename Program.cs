@@ -47,7 +47,7 @@ namespace ConsoleApp4
                     }
                     Console.WriteLine(guessedWord);
                     //buiding an string out of char array to be able to check if player guessed the randomly picked word
-                    string guessedWordString = new(guessedWord);
+                    string guessedWordString = new string(guessedWord);
                     if (guessedWordString == randomWord)
                     {
                         guessedRight = true;
