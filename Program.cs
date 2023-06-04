@@ -45,7 +45,7 @@ namespace ConsoleApp4
                             guessedWord[i] = guessingLetter;
                         }
                     }
-                    Console.WriteLine(guessedWord + "\n");
+                    Console.WriteLine(guessedWord);
                     //buiding an string out of char array to be able to check if player guessed the randomly picked word
                     string guessedWordString = new string(guessedWord);
                     if (guessedWordString == randomWord)
@@ -56,8 +56,7 @@ namespace ConsoleApp4
                     Console.WriteLine("Nice guess!");
                     Console.WriteLine("Keep it going...\n");
                 }
-                //...*stop and count wrong guess
-                else
+                else //...*stop and count wrong guess
                 {
                     numOfWrongGuesses++;
                     Console.WriteLine("Secret word doesnt contain the letter you provided!");
