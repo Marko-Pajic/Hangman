@@ -45,7 +45,7 @@ namespace ConsoleApp4
                             guessedWord[i] = guessingLetter;
                         }
                     }
-                    Console.WriteLine(guessedWord);
+                    Console.WriteLine(guessedWord + "\n");
                     //buiding an string out of char array to be able to check if player guessed the randomly picked word
                     string guessedWordString = new string(guessedWord);
                     if (guessedWordString == randomWord)
@@ -54,8 +54,7 @@ namespace ConsoleApp4
                         break;
                     }
                     Console.WriteLine("Nice guess!");
-                    Console.WriteLine("Keep it going...");
-                    Console.WriteLine();
+                    Console.WriteLine("Keep it going...\n");
                 }
                 //...*stop and count wrong guess
                 else
@@ -68,8 +67,7 @@ namespace ConsoleApp4
                         break;
                     }
                     Console.WriteLine($"You have {Program.GUESS_LIMIT - numOfWrongGuesses} shots left.");
-                    Console.WriteLine("Try again...");
-                    Console.WriteLine();
+                    Console.WriteLine("Try again...\n");
                 }
             }
             if (guessedRight)
